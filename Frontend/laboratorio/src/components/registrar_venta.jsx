@@ -20,12 +20,17 @@ const RegistrarVenta = () => {
         e.preventDefault();
         setMessage({ text: 'Procesando...', type: 'loading' });
 
+
+        const token = localStorage.getItem('token');
+
         try {
+
             const response = await fetch('http://localhost:3000/sales', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
 
+                    'Authorization': token ? `Bearer ${token}` : ''
                 },
                 body: JSON.stringify({
                     id_customer: parseInt(formData.id_customer),
@@ -37,9 +42,8 @@ const RegistrarVenta = () => {
 
             if (response.ok) {
                 setMessage({ text: '¡Venta registrada con éxito!', type: 'success' });
-                setFormData({ id_customer: '', amount: '' }); // Limpiar formulario
+                setFormData({ id_customer: '', amount: '' });
             } else {
-
                 setMessage({ text: data.message || 'Error al registrar la venta.', type: 'error' });
             }
         } catch (error) {
