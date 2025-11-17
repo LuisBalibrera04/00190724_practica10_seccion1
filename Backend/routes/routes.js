@@ -32,6 +32,11 @@ router.post("/signin", (req, res) => {
 
 router.get("/", displayHome);
 
+// --- RUTA PROTEGIDA ---
+router.get("/protected", verifyToken, (req, res) => {
+    res.json({ message: "Contenido protegido - Bienvenido!" });
+});
+
 // --- USUARIOS ---
 router.get("/users", verifyToken, getUsers);
 router.get("/users/:id", verifyToken, getUserById);

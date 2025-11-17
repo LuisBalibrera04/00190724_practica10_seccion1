@@ -1,19 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await API.post("/signin", { email, password });
+      const response = await API.post("/signin", { username: email, password });
       localStorage.setItem("token", response.data.token);
-      alert("Login successful!");
+      setIsAuthenticated(true);
+      navigate("/protected");
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong!");
+      setError(err.response?.data?.message || "Algo salió mal!");
     }
   };
 
