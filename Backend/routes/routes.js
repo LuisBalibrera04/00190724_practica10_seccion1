@@ -1,4 +1,6 @@
 import express from "express";
+import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../Keys/keys.js";
 import { verifyToken } from "../middleware/Index.js";
 import { getUsers, getUserById } from "../controllers/getUsers.js";
 import { createUser } from "../controllers/createUsers.js";
@@ -12,14 +14,10 @@ import { getSalesReport } from "../controllers/get_sales_report.js";
 
 const router = express.Router();
 
-import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "../Keys/keys.js";
-
-
 router.post("/signin", (req, res) => {
-	const { username = "test" } = req.body;
-	const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
-	res.json({ token });
+    const { username = "test" } = req.body;
+    const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
+    res.json({ token });
 });
 
 router.get("/", displayHome);
@@ -28,9 +26,11 @@ router.get("/users/:id", verifyToken, getUserById);
 router.post("/users", verifyToken, createUser);
 router.put("/users/:id", verifyToken, updateUser);
 router.delete("/users/:id", verifyToken, deleteUser);
-router.post("/ventas", verifyToken, createSale );
-router.get("/ventas", verifyToken, getSales );
-router.get("/customers/search", verifyToken, getCustomerByCode);
+
+router.post("/ventas", verifyToken, createSale);
+router.get("/ventas", verifyToken, getSales);
 router.get("/sales/report", verifyToken, getSalesReport);
+
+router.get("/customers/search", verifyToken, getCustomerByCode);
 
 export default router;

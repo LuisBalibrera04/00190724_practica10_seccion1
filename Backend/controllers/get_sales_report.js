@@ -2,16 +2,9 @@ import { pool } from "../data/conection.js";
 
 export const getSalesReport = async (req, res) => {
     try {
-        const query = `
-            SELECT 
-                c.name AS customer_name, 
-                SUM(s.amount) AS total_sales 
-            FROM sales AS s 
-            JOIN customers AS c ON s.id_customer = c.id 
-            GROUP BY c.name
-            ORDER BY total_sales DESC
+        const query = `SELECT c.name, SUM(s.amount) FROM customers as C JOIN sales AS S ON s.id_customer = c.id GROUP BY c.name
         `;
-        
+
         const result = await pool.query(query);
 
         res.status(200).json(result.rows);
