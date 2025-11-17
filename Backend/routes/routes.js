@@ -1,7 +1,10 @@
+
 import express from "express";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../Keys/keys.js";
 import { verifyToken } from "../middleware/Index.js";
+
+
 import { getUsers, getUserById } from "../controllers/getUsers.js";
 import { createUser } from "../controllers/createUsers.js";
 import { updateUser } from "../controllers/updateUsers.js";
@@ -14,15 +17,24 @@ import { getSalesReport } from "../controllers/get_sales_report.js";
 
 const router = express.Router();
 
+
 router.post("/signin", (req, res) => {
-    const { username = "test" } = req.body;
+    const { username, password } = req.body;
+
+   
+    if (!username || !password) {
+        return res.status(400).json({ message: "Usuario y contraseña requeridos" });
+    }
+    
     const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
     res.json({ token });
 });
 
 router.get("/", displayHome);
+
+
 router.get("/users", verifyToken, getUsers);
-router.get("/users/:id", verifyToken, getUserById);
+router.get("/users/:id", verifyToken, getUserById); 
 router.post("/users", verifyToken, createUser);
 router.put("/users/:id", verifyToken, updateUser);
 router.delete("/users/:id", verifyToken, deleteUser);
