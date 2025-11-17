@@ -5,6 +5,7 @@ import { createUser } from "../controllers/createUsers.js";
 import { updateUser } from "../controllers/updateUsers.js";
 import { deleteUser } from "../controllers/deleteUsers.js";
 import { displayHome } from "../controllers/displayHome.js";
+import { createSale } from "../controllers/post_venta.js";
 
 const router = express.Router();
 
@@ -24,5 +25,6 @@ router.get("/users/:id", verifyToken, getUserById);
 router.post("/users", verifyToken, createUser);
 router.put("/users/:id", verifyToken, updateUser);
 router.delete("/users/:id", verifyToken, deleteUser);
+router.post("/ventas", verifyToken, createSale )
 
 export default router;

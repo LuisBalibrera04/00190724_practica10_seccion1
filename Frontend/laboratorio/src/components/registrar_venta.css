@@ -1,83 +1,92 @@
 .form-container {
-  max-width: 500px; /* Más estrecho que la tabla para que se vea bien */
+  max-width: 500px;
   margin: 2rem auto;
   padding: 30px;
-  background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h2 {
   text-align: center;
-  color: #333;
+  color: #2c3e50;
   margin-bottom: 25px;
+  font-size: 1.8rem;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #555;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
 }
 
 input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
   font-size: 16px;
-  box-sizing: border-box; /* Para que el padding no rompa el ancho */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
 input:focus {
-  border-color: #007bff;
+  border-color: #3182ce;
   outline: none;
 }
 
 .submit-btn {
   width: 100%;
-  padding: 12px;
-  background-color: #28a745; /* Verde para acciones positivas */
+  padding: 14px;
+  background-color: #48bb78;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-  background-color: #218838;
+  background-color: #38a169;
 }
 
-/* Estilos para los mensajes de alerta */
+/* Estilos para mensajes de feedback */
 .message {
   margin-top: 20px;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 15px;
+  border-radius: 8px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 600;
+  animation: fadeIn 0.5s;
 }
 
 .message.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+  background-color: #c6f6d5;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
 }
 
 .message.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  background-color: #fed7d7;
+  color: #822727;
+  border: 1px solid #feb2b2;
 }
 
 .message.loading {
-  background-color: #e2e3e5;
-  color: #383d41;
+  background-color: #edf2f7;
+  color: #2d3748;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
