@@ -7,6 +7,8 @@ import { deleteUser } from "../controllers/deleteUsers.js";
 import { displayHome } from "../controllers/displayHome.js";
 import { createSale } from "../controllers/post_venta.js";
 import { getSales } from "../controllers/get_venta.js";
+import { getCustomerByCode } from "../controllers/get_customerbycode.js";
+import { getSalesReport } from "../controllers/get_sales_report.js";
 
 const router = express.Router();
 
@@ -28,5 +30,7 @@ router.put("/users/:id", verifyToken, updateUser);
 router.delete("/users/:id", verifyToken, deleteUser);
 router.post("/ventas", verifyToken, createSale );
 router.get("/ventas", verifyToken, getSales );
+router.get("/customers/search", verifyToken, getCustomerByCode);
+router.get("/sales/report", verifyToken, getSalesReport);
 
 export default router;

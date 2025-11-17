@@ -1,0 +1,54 @@
+.report-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.report-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 24px;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.report-table th, 
+.report-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.report-table th {
+    background-color: #27ae60; /* Color verde para diferenciar reporte */
+    color: white;
+    font-weight: 600;
+}
+
+.report-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.total-cell {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+.loading-text, .error-text {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.error-text {
+    color: #e74c3c;
+}
