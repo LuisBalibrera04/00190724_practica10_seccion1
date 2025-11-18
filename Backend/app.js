@@ -11,6 +11,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Usar rutas
-app.use('/api', routes);
+app.use('/', routes);
 
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
