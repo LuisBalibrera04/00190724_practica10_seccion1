@@ -1,74 +1,116 @@
+/* buscar_customer.css Refactor - Modernización y Adaptación a Tema */
+
 .search-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
+    max-width: 700px; /* Aumento ligero del ancho para campos de búsqueda */
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background-color: var(--color-card-bg);
+    border-radius: 12px; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid var(--color-border-base);
 }
 
 .search-title {
     text-align: center;
-    color: #333;
-    margin-bottom: 1.5rem;
+    color: var(--color-text-base);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
+/* Uso de Flexbox para la barra de búsqueda */
 .search-form {
     display: flex;
-    gap: 10px;
-    margin-bottom: 2rem;
+    align-items: center;
+    gap: 15px; 
+    margin-bottom: 3rem;
 }
 
 .search-input {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+    padding: 14px 15px; 
+    border: 2px solid var(--color-border-base);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--color-background); 
+    color: var(--color-text-base);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .search-button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    padding: 14px 30px; 
+    background-color: var(--color-primary);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
 }
 
 .search-button:hover {
-    background-color: #0056b3;
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .error-message {
-    color: #dc3545;
+    color: var(--color-danger);
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    font-weight: bold;
 }
 
-/* Tabla de resultados */
+/* Tabla de resultados - Uso de border-collapse: separate para esquinas redondeadas */
 .results-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    background-color: white;
+    border-collapse: separate; 
+    border-spacing: 0;
+    margin-top: 1.5rem;
+    background-color: var(--color-background);
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .results-table th, 
 .results-table td {
-    padding: 12px;
+    padding: 15px; 
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    color: var(--color-text-base);
 }
 
 .results-table th {
-    background-color: #007bff;
+    background-color: var(--color-primary); /* Azul Primario */
     color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+/* Aplicar border-radius solo a las esquinas superiores del encabezado */
+.results-table thead tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+.results-table thead tr:first-child th:last-child {
+    border-top-right-radius: 8px;
 }
 
-.results-table tr:hover {
-    background-color: #f1f1f1;
+.results-table td {
+    border-bottom: 1px solid var(--color-border-base);
+}
+
+.results-table tr:last-child td {
+    border-bottom: none; 
+}
+
+.results-table tbody tr:hover {
+    background-color: var(--color-table-row-hover); 
+    cursor: pointer;
 }

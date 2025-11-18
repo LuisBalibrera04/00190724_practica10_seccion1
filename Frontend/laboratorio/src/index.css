@@ -1,39 +1,79 @@
+
+
 :root {
+  /* Variables de Color (Dark Theme por defecto) */
+  --color-primary: #007bff; /* Azul para acciones principales y enlaces */
+  --color-primary-hover: #3498db;
+  --color-secondary: #48bb78; /* Verde para éxito y reportes */
+  --color-secondary-hover: #38a169;
+  --color-danger: #dc3545; /* Rojo para errores */
+
+  --color-background: #1a1a1a; /* Fondo principal muy oscuro */
+  --color-card-bg: #242424; /* Fondo de tarjetas o contenedores, ligeramente más claro que el fondo */
+  --color-text-base: rgba(255, 255, 255, 0.87); /* Texto principal claro */
+  --color-text-secondary: #888; /* Texto secundario gris */
+  --color-border-base: #3e3e3e; /* Borde sutil para contenedores y tablas */
+  --color-table-row-hover: rgba(255, 255, 255, 0.05); /* Hover de fila sutil */
+
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: var(--color-text-base);
+  background-color: var(--color-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-primary: #007bff;
+    --color-primary-hover: #535bf2;
+    --color-secondary: #28a745;
+    --color-secondary-hover: #218838;
+    --color-danger: #dc3545;
+
+    --color-background: #ffffff;
+    --color-card-bg: #f8f9fa;
+    --color-text-base: #213547;
+    --color-text-secondary: #888;
+    --color-border-base: #e2e8f0;
+    --color-table-row-hover: #f1f1f1;
+  }
 }
 
+/* Estilos de Enlaces */
+a {
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Estilos de Cuerpo/Layout */
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-background);
 }
 
+/* Estilos de Títulos */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--color-text-base);
 }
+
 
 button {
   border-radius: 8px;
@@ -42,27 +82,18 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-card-bg);
+  color: var(--color-text-base);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-hover);
+  color: white; 
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  outline: 4px auto var(--color-primary);
+  outline-offset: 1px;
 }
